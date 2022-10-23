@@ -1,10 +1,10 @@
 {
   "author": "Titux Metal <github@lgdweb.fr>",
-  "description": "Base project used to Dockerize a Strapi application.",
+  "description": "A Dockerized Strapi Blog Starter.",
   "license": "MIT",
-  "name": "dockerized-strapi-base",
+  "name": "dockerized-strapi-blog-starter",
   "private": true,
-  "repository": "https://github.com/TituxMetal/dockerized-strapi-base.git",
+  "repository": "https://github.com/lgdweb/dockerized-strapi-blog-starter.git",
   "version": "1.0.0",
   "scripts": {
     "develop": "NODE_ENV=development strapi develop",
@@ -26,7 +26,8 @@
     "pg": "8.8.0"
   },
   "strapi": {
-    "uuid": "d465d5de-312f-4cd2-8a50-16fc6d96c80b"
+    "uuid": "d465d5de-312f-4cd2-8a50-16fc6d96c80b",
+    "telemetryDisabled": true
   },
   "engines": {
     "node": ">=14.19.1 <=18.x.x",

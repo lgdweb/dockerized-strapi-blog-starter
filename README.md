@@ -1,12 +1,12 @@
-# Dockerized Strapi Base
+# Dockerized Strapi Blog Starter
 
-Base project used to Dockerize a Strapi application.
+A Dockerized Strapi Blog Starter.
 
-## Base Docker image
+## Docker image
 
-Build the base Docker image for production.
+Build the Docker image for production.
 
 1. Make sure to change variables in .env file
-2. Run the command `docker build -t lgdweb/strapi-base:latest ./`
-3. Push the image to docker registry `docker push lgdweb/strapi-base:latest`
+2. Run the command `docker build -t lgdweb/strapi-blog:latest ./`
+3. Push the image to docker registry `docker push lgdweb/strapi-blog:latest`
 4. Run the container `docker compose up -d`

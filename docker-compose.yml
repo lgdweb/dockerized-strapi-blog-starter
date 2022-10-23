@@ -1,8 +1,8 @@
 version: '3.9'
 services:
   strapi:
-    container_name: strapi-base
-    image: lgdweb/strapi-base:latest
+    container_name: strapi-blog
+    image: lgdweb/strapi-blog:latest
     restart: unless-stopped
     environment:
       ADMIN_JWT_SECRET: ${ADMIN_JWT_SECRET}
@@ -13,7 +13,7 @@ services:
       CLOUDINARY_SECRET: ${CLOUDINARY_SECRET}
       CLOUDINARY_FOLDER: ${CLOUDINARY_FOLDER}
       DATABASE_CLIENT: ${DATABASE_CLIENT}
-      DATABASE_HOST: ${DATABASE_HOST:-strapi-base-DB}
+      DATABASE_HOST: ${DATABASE_HOST:-strapi-blog-DB}
       DATABASE_NAME: ${DATABASE_NAME}
       DATABASE_PASSWORD: ${DATABASE_PASSWORD}
       DATABASE_PORT: ${DATABASE_PORT}
@@ -30,15 +30,15 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro
     networks:
-      - database
+      - strapi-blog-nw
       # - reverse-proxy-nw
     ports:
       - '1337:1337'
     depends_on:
-      - strapi-base-DB
+      - strapi-blog-DB
 
-  strapi-base-DB:
-    container_name: strapi-base-DB
+  strapi-blog-DB:
+    container_name: strapi-blog-DB
     platform: linux/amd64
     restart: unless-stopped
     image: postgres:12.12-alpine
@@ -47,15 +47,15 @@ services:
       POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
       POSTGRES_DB: ${DATABASE_NAME}
     volumes:
-      - strapi-data:/var/lib/postgresql/data/
+      - strapi-blog-data:/var/lib/postgresql/data/
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro
     networks:
-      - database
+      - strapi-blog-nw
 
 volumes:
-  strapi-data:
+  strapi-blog-data:
 networks:
-  database:
+  strapi-blog-nw:
   # reverse-proxy-nw:
   #   external: true
