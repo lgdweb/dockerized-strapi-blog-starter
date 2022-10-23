@@ -1,0 +1,61 @@
+version: '3.9'
+services:
+  strapi:
+    container_name: strapi-base
+    image: lgdweb/strapi-base:latest
+    restart: unless-stopped
+    environment:
+      ADMIN_JWT_SECRET: ${ADMIN_JWT_SECRET}
+      APP_KEYS: ${APP_KEYS}
+      API_TOKEN_SALT: ${API_TOKEN_SALT}
+      CLOUDINARY_NAME: ${CLOUDINARY_NAME}
+      CLOUDINARY_KEY: ${CLOUDINARY_KEY}
+      CLOUDINARY_SECRET: ${CLOUDINARY_SECRET}
+      CLOUDINARY_FOLDER: ${CLOUDINARY_FOLDER}
+      DATABASE_CLIENT: ${DATABASE_CLIENT}
+      DATABASE_HOST: ${DATABASE_HOST:-strapi-base-DB}
+      DATABASE_NAME: ${DATABASE_NAME}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+      DATABASE_PORT: ${DATABASE_PORT}
+      DATABASE_USERNAME: ${DATABASE_USERNAME}
+      JWT_SECRET: ${JWT_SECRET}
+      NODE_ENV: ${NODE_ENV}
+      SMTP_FROM: ${SMTP_FROM:-no-reply@strapi.io}
+      SMTP_HOST: ${SMTP_HOST}
+      SMTP_PASSWORD: ${SMTP_PASSWORD}
+      SMTP_PORT: ${SMTP_PORT:-587}
+      SMTP_TO: ${SMTP_TO:-example@strapi.io}
+      SMTP_USER: ${SMTP_USER}
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+    networks:
+      - database
+      # - reverse-proxy-nw
+    ports:
+      - '1337:1337'
+    depends_on:
+      - strapi-base-DB
+
+  strapi-base-DB:
+    container_name: strapi-base-DB
+    platform: linux/amd64
+    restart: unless-stopped
+    image: postgres:12.12-alpine
+    environment:
+      POSTGRES_USER: ${DATABASE_USERNAME}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_DB: ${DATABASE_NAME}
+    volumes:
+      - strapi-data:/var/lib/postgresql/data/
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+    networks:
+      - database
+
+volumes:
+  strapi-data:
+networks:
+  database:
+  # reverse-proxy-nw:
+  #   external: true

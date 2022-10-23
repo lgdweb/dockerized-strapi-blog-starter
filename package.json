@@ -1,0 +1,35 @@
+{
+  "author": "Titux Metal <github@lgdweb.fr>",
+  "description": "Base project used to Dockerize a Strapi application.",
+  "license": "MIT",
+  "name": "dockerized-strapi-base",
+  "private": true,
+  "repository": "https://github.com/TituxMetal/dockerized-strapi-base.git",
+  "version": "1.0.0",
+  "scripts": {
+    "develop": "NODE_ENV=development strapi develop",
+    "start": "strapi start",
+    "build": "strapi build",
+    "format": "prettier --write \"src/**/*.js\" \"config/**/*.js\"",
+    "strapi": "strapi"
+  },
+  "devDependencies": {
+    "prettier": "2.7.1"
+  },
+  "dependencies": {
+    "@strapi/plugin-i18n": "4.4.5",
+    "@strapi/plugin-users-permissions": "4.4.5",
+    "@strapi/provider-email-nodemailer": "4.4.5",
+    "@strapi/provider-upload-cloudinary": "4.4.5",
+    "@strapi/strapi": "4.4.5",
+    "better-sqlite3": "7.6.2",
+    "pg": "8.8.0"
+  },
+  "strapi": {
+    "uuid": "d465d5de-312f-4cd2-8a50-16fc6d96c80b"
+  },
+  "engines": {
+    "node": ">=14.19.1 <=18.x.x",
+    "npm": ">=6.0.0"
+  }
+}

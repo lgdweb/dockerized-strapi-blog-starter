@@ -1,0 +1,7 @@
+.tmp/
+.env*
+!.env.example
+node_modules
+*.cache
+build
+.strapi-updater.json
