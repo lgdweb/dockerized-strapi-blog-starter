@@ -43,6 +43,11 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "admin::user"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "seo.seo-information"
     }
   }
 }
