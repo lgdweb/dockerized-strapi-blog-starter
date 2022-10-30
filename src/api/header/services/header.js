@@ -1,9 +1,9 @@
-'use strict';
+'use strict'
 
 /**
  * header service
  */
 
-const { createCoreService } = require('@strapi/strapi').factories;
+const { createCoreService } = require('@strapi/strapi').factories
 
-module.exports = createCoreService('api::header.header');
+module.exports = createCoreService('api::header.header')
