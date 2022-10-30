@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_config_social_links",
+  "info": {
+    "displayName": "SocialLink",
+    "icon": "angle-left"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "enumeration",
+      "enum": [
+        "Github",
+        "Youtube",
+        "Twitter"
+      ],
+      "required": true
+    },
+    "link": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
