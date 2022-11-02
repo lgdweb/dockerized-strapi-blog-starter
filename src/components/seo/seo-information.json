@@ -2,14 +2,15 @@
   "collectionName": "components_seo_seo_informations",
   "info": {
     "displayName": "SeoInformation",
-    "icon": "arrow-right"
+    "icon": "arrow-right",
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "seoTitle": {
+    "title": {
       "type": "string"
     },
-    "seoDescription": {
+    "description": {
       "type": "text"
     }
   }
